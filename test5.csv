@@ -1,0 +1,5 @@
+cleanspeech,impulse,rn,result
+test1.wav,impulse.wav,ftenrn.wav,conv1.wav
+test2.wav,,,conv2.wav
+test3.wav,,,conv3.wav
+test4.wav,,,conv4.wav
