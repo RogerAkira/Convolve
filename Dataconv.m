@@ -6,7 +6,7 @@ clc;
 
 fnm = filename;
 fid = fopen(fnm,'r');
-csv = textscan(fid,'%s %s %s %s %s %s %s','HeaderLines',1,'Delimiter',',');
+csv = textscan(fid,'%s %s %s %s %s %s %s %s %s %s','HeaderLines',1,'Delimiter',',');
 
 %loop through each filename
 csil = length(csv{1,1});
@@ -41,7 +41,7 @@ for row = 1:csil
 end
 fnm = filename;
 fid = fopen(fnm,'r');
-nxt = textscan(fid,'%s %s %s %s %s %s %s','HeaderLines',1,'Delimiter',','); 
+nxt = textscan(fid,'%s %s %s %s %s %s %s %s %s %s','HeaderLines',1,'Delimiter',','); 
 csil = length(nxt{1,7});
 
 for I = 1:csil      
@@ -63,7 +63,11 @@ for I = 1:csil
         %writing data back into a wav file
         [filepath,name,ext] = fileparts(mx); 
         newfnm1 = sprintf('%s%s%s%s',output,'mixed',name,'.wav');
-
+        newfnm2 = sprintf('%s%s%s','mixed',name,'.wav');
+        K = cellstr(newfnm2);
+        Z = cellstr(newfnm1);
+        xlswrite(fnm,Z,1,strcat('H',num2str(I+1)));
+        xlswrite(fnm,K,1,strcat('I',num2str(I+1)));
         %writing data back into a wav file
         audiowrite(newfnm1,mixed,FS1);
 end   
